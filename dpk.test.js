@@ -5,6 +5,7 @@ const undefinedResult = 'c1802e6b9670927ebfddb7f67b3824642237361f07db35526c42c55
 const emptyResult = 'b7478342a465088fc33d43a64cd370737e5a3bf6749ca62c1d6db341beb987326b4df3a9f54f67a2f0ee915d4216af2f382fda14dd58dc67794f745e92d7a7f6';
 const longText = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.';
 const longTextSha256 = 'dabf5eef04b0ea9221a6353983ea585046d6db19dd8bca67aad031d849e37466aca5e9d6fa6855263f26cb31bda3cea4d15646881d7f33f6d561160b6c2050b7';
+const incorrectTextOutput = '3bcc076dd92a1b6aee405dd27c42db180ad2a93eccdabde3d3d394bfe3d109949ba547664fbead715ea42104ce437f4639190c3bfea10e1c42668cbad424b077';
 
 describe("deterministicPartitionKey base", () => {
   it("Returns the literal '0' when given no input", () => {
@@ -34,6 +35,11 @@ describe("deterministicPartitionKey base", () => {
 });
 
 describe("deterministicPartitionKey advance check", () => {
+  it("Returns the hex equal incorrectTextOutput when given incorrect input", () => {
+    const trivialKey = deterministicPartitionKey({abc: 'test'});
+    expect(trivialKey).toBe(incorrectTextOutput);
+  });
+
   it("Returns the literal test when given test input", () => {
     const trivialKey = deterministicPartitionKey({partitionKey: 'test'});
     expect(trivialKey).toBe("test");
