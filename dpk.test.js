@@ -44,6 +44,11 @@ describe("deterministicPartitionKey advance check", () => {
     const trivialKey = deterministicPartitionKey({partitionKey: 'test'});
     expect(trivialKey).toBe("test");
   });
+
+  it("Returns the literal test when given number input", () => {
+    const trivialKey = deterministicPartitionKey({partitionKey: 123});
+    expect(trivialKey).toBe("123");
+  });
   
   it("Returns the longtextsha256 when given longText input", () => {
     const trivialKey = deterministicPartitionKey({partitionKey: longText});
