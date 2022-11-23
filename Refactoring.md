@@ -9,3 +9,9 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+1. Added new tests to check previous solution
+2. Expose new function generateHash
+3. Expose env object (potentially should be taken from config)
+4. Decrease amount of ifs
+5. Better readable code based on not changing variables on the fly
